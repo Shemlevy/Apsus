@@ -1,5 +1,5 @@
 import NoteService from '../services/NoteService.js'
-import HomePage from './HomePage.js'
+import NotesMgmt from './NotesMgmt.js'
 
 export default {
     template: `
@@ -29,7 +29,7 @@ export default {
         NoteService.getNoteById(noteId)
          .then(note => this.note = note)
          .catch(err => {
-             this.$router.push('/')
+             this.$router.push('/notes')
          }) 
     },
     methods: {
@@ -45,7 +45,7 @@ export default {
             NoteService.deleteNote(+noteId)
                 .then(_ => {
                     var userMsg = { txt: `Note ${noteId} was succesfuly deleted`, type: 'success' }
-                    this.$router.push('/')
+                    this.$router.push('/notes')
                     HomePage.showUserMsg(userMsg);
                 })
                 .catch(err => {
