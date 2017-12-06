@@ -1,0 +1,58 @@
+*{
+    margin:2px auto;
+    padding:0;
+    outline:0;
+    box-sizing: border-box;
+    
+}
+main {
+    display: flex;
+    justify-content: space-between;
+    color: rgba(160, 157, 157, 0.534);
+    align-items: center;
+}
+main button {
+    background: none;
+    border: none;
+    font-size: .8em;
+    width: 10px;
+    transition: all .5s ease-in-out;
+}
+main button:hover {
+    transform: scale(1.5);
+    cursor: pointer;
+    color: red;
+}
+
+.container {
+    display: flex;
+    flex-flow: column wrap;
+    height: 50vh;
+    align-items: left;
+}
+
+.note {
+    width:33%;
+    min-height: 20%;
+    max-height: 50%;
+    background-color: yellow;
+    box-shadow: 4px 4px 6px black;
+    margin: 1.5px;
+    list-style: none;
+    text-align:center;
+    color:black; 
+    cursor: pointer; 
+    overflow: hidden;
+    transition: all .4s ease-in-out;
+}
+.note:hover{
+    transform: scale(1.05)
+}
+.note-details {
+    width:95vw;
+    background-color: yellow;
+    box-shadow: 4px 4px 10px black;
+    list-style: none;
+    text-align:center;
+    color:black; 
+}
