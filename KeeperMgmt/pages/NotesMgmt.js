@@ -1,36 +1,17 @@
 'use strict'
-
+import NotePreview from '../cmps/NotePreview.js'
 import NoteService from '../services/NoteService.js'
 
 export default {
     template: `
         <section>
-            <md-card v-for="note in notes">
-                 <div @click="viewNoteDetails(note.id)">
-                    <md-card-header>
-                        <md-card-header-text>
-                            <div class="md-subhead">{{note.date}}</div>
-                            <div class="md-title">{{note.title}}</div>
-                            <div class="md-subhead">{{note.text}}</div>
-                        </md-card-header-text>
-                        <md-card-media v-if="note.src">
-                            <img src="'img/note/' + note.id + '.png'">
-                        </md-card-media>
-                    </md-card-header>
-                </div>
-            </md-card>
-          
-
-
+        <note-preview @viewNote="viewNoteDetails" v-for="note in notes" :note="note"></note-preview>
             <button @click="addNote">+</button>
-            
         </section>
-    
     `,
     data() {
         return {
             notes: [],
-            userMsg: null
         }
     },
     created() {
@@ -45,7 +26,7 @@ export default {
             })
     },
     methods: {
-        viewNoteDetails(noteId){
+        viewNoteDetails(noteId) {
             this.$router.push('/notes/' + noteId)
         },
         deleteNote(noteId) {
@@ -57,7 +38,7 @@ export default {
                     var userMsg = { txt: 'Note Delete Failed!', type: 'danger' }
                 })
         },
-        addNote(){
+        addNote() {
             var newNote = NoteService.emptyNote()
             NoteService.saveNote(newNote)
             this.$router.push(`note/${newNote.id}`)
@@ -65,24 +46,9 @@ export default {
 
     },
     computed: {
-        alertClass() {
-            if (!this.userMsg) return;
-            return `alert-${this.userMsg.type}`
-        }
+   
+    },
+    components: {
+        NotePreview
     }
 }
-
-
-// {/* <ul class="container">
-// <li class="note" v-for="note in notes">
-// <router-link tag="div" :to="'/note/' + note.id">
-//     <main>
-//         <h5>{{note.date}}</h5>
-//         <button @click="deleteNote(note.id)">x</button>
-//     </main>    
-//     <h1>{{note.title}}</h1>
-//     <p>{{note.text}}</p>
-//     <!-- <img :src="'img/note/' + note.id + '.png'" > -->
-// </router-link>    
-// </li>
-// </ul> */}
