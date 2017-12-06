@@ -10,7 +10,6 @@
     display: inline-block;
     vertical-align: top;
     overflow: hidden;
-    max-height: 150px;
     transition: all .5s ease-in-out;
     cursor: pointer;
     text-overflow: ellipsis;

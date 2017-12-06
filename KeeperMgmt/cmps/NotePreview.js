@@ -21,7 +21,7 @@ export default {
         shortText() {
             let string = this.note.text
             var dots = "...";
-            let limit = 10;
+            let limit = 150;
             if (string.length > limit) {
                 string = string.substring(0, limit) + dots;
             }

@@ -6,8 +6,8 @@ export default {
         <section class="note-details" v-if="note">
             <div class="note-view" v-if="note">
                 <div class="note-edit-date"">{{note.date}}</div>
-                <div class="note-edit-title" @click.once="clearInput"  @blur="updateNote($event ,note)" :contenteditable="true">{{note.title}}</div>
-                <div class="note-edit-text"  @click.once="clearInput" @blur="updateNote($event ,note)" :contenteditable="true">{{note.text}}</div>
+                <div class="note-edit-title" @click.once="clearInput"  @blur="updateTitle($event ,note)" :contenteditable="true">{{note.title}}</div>
+                <div class="note-edit-text"  @click.once="clearInput" @blur="updateText($event ,note)" :contenteditable="true">{{note.text}}</div>
                 <div class="note-edit-img-container">
                     <!-- <img :src="'img/note/' + note.id + '.png'" > -->
                 </div>
@@ -34,39 +34,30 @@ export default {
          }) 
     },
     methods: {
-        updateNote(ev, note) {
-            this.note.text = ev.target.innerText
+        updateTitle(ev, note) {
+            this.note.title = ev.target.innerText
+            this.note.newTitle = false;
             NoteService.saveNote(note)
         },
-        toggleEditable() {
-            this.editable = !this.editable
+        updateText(ev, note) {
+            this.note.text = ev.target.innerText
+            this.note.newText = false;
+            NoteService.saveNote(note)
         },
         deleteNote(noteId) {
             NoteService.deleteNote(+noteId)
                 .then(_ => {
                     this.$router.push('/notes')
-
                 })
                 .catch(err =>
-                    console.log('Error')
-                    
+                    console.log('Error')     
             )
         },
         clearInput(ev){
-            if (this.note.isNew) ev.target.innerText = ''
+            var text = this.note
+            if (text.newTitle || text.newText) ev.target.innerText = ''
             
         }
     }
 }
 
-// <main>
-// <h5>{{note.date}}</h5>
-// <button @click="deleteNote(note.id)">x</button>
-// </main>
-// <h1 @blur="updateNote($event ,note)" :contenteditable="true">{{note.title}}</h1>
-// <p  @blur="updateNote($event ,note)" :contenteditable="true">{{note.text}}</p>
-// <!-- <img :src="'img/note/' + note.id + '.png'" > -->
-// <section class="tools">
-// <select>{{note.color}}</select>
-// <select>{{note.priority}}</select>
-// </section>

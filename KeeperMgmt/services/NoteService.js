@@ -29,7 +29,7 @@ var notes = [
 ]
 
 function emptyNote() {
-    return { id:'', title: 'Title' , text: 'Text', img: '', color: '', priority: '', date: _getDate(), isNew:true }
+    return { id:'', title: 'Title' , text: 'Text', img: '', color: '', priority: '', date: _getDate(), newTitle:true , newText:true }
 }
 
 function _getNextId() {
