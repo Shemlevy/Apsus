@@ -60,7 +60,7 @@ export default {
         addNote(){
             var newNote = NoteService.emptyNote()
             NoteService.saveNote(newNote)
-            this.$router.push(`note/${newNote.id}`)
+            this.$router.push(`notes/${newNote.id}`)
         }
 
     },

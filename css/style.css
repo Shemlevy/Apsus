@@ -10,7 +10,7 @@
     display: inline-block;
     vertical-align: top;
     overflow: hidden;
-    /* max-height: 150px; */
+    max-height: 150px;
     transition: all .5s ease-in-out;
     cursor: pointer;
 }
@@ -18,3 +18,34 @@
 .md-card:hover {
     transform: scale(1.05);
 }
+
+
+.note-view{
+    width: 300px;
+    height: 60vh;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.459);
+    font-family: Roboto,Noto Sans,-apple-system,BlinkMacSystemFont,sans-serif;
+    display: flex;
+    flex-flow: column wrap;
+    margin: 0 auto;
+    background: white;
+}
+
+.note-edit-date{
+    align-self: center;
+    opacity: .25;
+    font-size: 14px;    
+}
+
+.note-edit-title{
+    font-size: 36px;
+    margin: 15px;
+}
+
+
+.note-edit-text{
+    opacity: .54;
+    font-size: 20px;
+}
+
+

@@ -14,7 +14,7 @@ const routes = [
         component: NotesMgmt
     },
     {
-        path: '/note/:noteId',
+        path: '/notes/:noteId',
         component: NoteDetailsPage
     },
 ];

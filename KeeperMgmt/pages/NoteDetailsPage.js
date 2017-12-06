@@ -4,39 +4,39 @@ import NotesMgmt from './NotesMgmt.js'
 export default {
     template: `
         <section class="note-details" v-if="note">
-             <main>
-             {{userMsg.txt}}
-                <h5>{{note.date}}</h5>
-                <button @click="deleteNote(note.id)">x</button>
-            </main>
-            <h1 @blur="updateNote($event ,note)" :contenteditable="true">{{note.title}}</h1>
-            <p  @blur="updateNote($event ,note)" :contenteditable="true">{{note.text}}</p>
-            <!-- <img :src="'img/note/' + note.id + '.png'" > -->
-            <section class="tools">
-                <select>{{note.color}}</select>
-                <select>{{note.priority}}</select>
-            </section>
+            <div class="note-view" v-if="note">
+                <div class="note-edit-date"">{{note.date}}</div>
+                <div class="note-edit-title" @click.once="clearInput"  @blur="updateNote($event ,note)" :contenteditable="true">{{note.title}}</div>
+                <div class="note-edit-text"  @click.once="clearInput" @blur="updateNote($event ,note)" :contenteditable="true">{{note.text}}</div>
+                <div class="note-edit-img-container">
+                    <!-- <img :src="'img/note/' + note.id + '.png'" > -->
+                </div>
+                <section class="tools">
+                    <select>{{note.color}}</select>
+                    <select>{{note.priority}}</select>
+                </section>
+            </div>
         </section>
     `,
     data() {
         return {
-            note :  null,
-            userMsg: {txt:'',type:''}
+            note :  null,    
         }
     },
     created() {
         var noteId = +this.$route.params.noteId
         NoteService.getNoteById(noteId)
-         .then(note => this.note = note)
+         .then(note => {
+             this.note = note
+            })
          .catch(err => {
              this.$router.push('/notes')
          }) 
     },
     methods: {
         updateNote(ev, note) {
-            this.note.txt = ev.target.innerText
+            this.note.text = ev.target.innerText
             NoteService.saveNote(note)
-            console.log('note updsate');
         },
         toggleEditable() {
             this.editable = !this.editable
@@ -44,16 +44,29 @@ export default {
         deleteNote(noteId) {
             NoteService.deleteNote(+noteId)
                 .then(_ => {
-                    var userMsg = { txt: `Note ${noteId} was succesfuly deleted`, type: 'success' }
                     this.$router.push('/notes')
-                    HomePage.showUserMsg(userMsg);
+
                 })
-                .catch(err => {
-                    var userMsg = { txt: 'Note Delete Failed!', type: 'danger' }
-                    this.showUserMsg(userMsg);
-                    HomePage.showUserMsg(userMsg);
+                .catch(err =>
+                    console.log('Error')
                     
-                })
+            )
         },
+        clearInput(ev){
+            if (this.note.isNew) ev.target.innerText = ''
+            
+        }
     }
 }
+
+// <main>
+// <h5>{{note.date}}</h5>
+// <button @click="deleteNote(note.id)">x</button>
+// </main>
+// <h1 @blur="updateNote($event ,note)" :contenteditable="true">{{note.title}}</h1>
+// <p  @blur="updateNote($event ,note)" :contenteditable="true">{{note.text}}</p>
+// <!-- <img :src="'img/note/' + note.id + '.png'" > -->
+// <section class="tools">
+// <select>{{note.color}}</select>
+// <select>{{note.priority}}</select>
+// </section>
