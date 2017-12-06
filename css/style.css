@@ -13,6 +13,7 @@
     max-height: 150px;
     transition: all .5s ease-in-out;
     cursor: pointer;
+    text-overflow: ellipsis;
 }
 
 .md-card:hover {
