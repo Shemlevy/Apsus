@@ -80,3 +80,19 @@
     background: rgba(75, 250, 148, 0.801)
 }
 
+.email-side-list{
+    max-width: 250px;
+}
+
+.email-list-title{
+    font-size: 20px
+    !important
+}
+
+.md-list-item-container span{
+    text-align: right;
+}
+
+.md-layout-item, .md-layout-item.md-size{
+    flex: 0;
+}
