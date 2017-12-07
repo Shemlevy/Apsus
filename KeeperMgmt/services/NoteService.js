@@ -2,31 +2,68 @@
 var notes = [
     {
         id: 101,
-        title: 'Audi',
+        title: 'Go To The Bank',
+        text: `Lorem, ipsum alias unde totam molestiae nostrum voluptate obcaecati facere, beatae sit soluta officia?`,
+        img: '',
+        color: 'blue',
+        priority: 2,
+        date: '4/12/2016 16:24:24'
+    },
+    {
+        id: 102,
+        title: 'Rob The BANK',
+        text: `find some mask, shotgun and bags, then beatae sit soluta officia?`,
+        img: 1,
+        color: 'orange',
+        priority: 3,
+        date: '7/04/2017 20:24:24'
+    },
+    {
+        id: 103,
+        title: 'Call Mom',
+        text: `Lorem, ipsum alias unde totam molestiae anie when you want wnath want me taga dam dam da tam nostrum voluptate obcaecati facere, beatae sit soluta officia?`,
+        img: 3,
+        color: 'orange',
+        priority: 1,
+        date: '7/08/2014 13:24:24'
+    },
+    {
+        id: 104,
+        title: 'Build Apsus',
+        text: `me taga dam dam da tam nostrum voluptate obcaecati facere, beatae sit soluta officia?`,
+        img: '',
+        color: 'green',
+        priority: 4,
+        date: '17/08/2016 19:24:24'
+    },
+    {
+        id: 105,
+        title: 'Search For Job',
+        text: `Lorem, ipsum alias unde totam molestiae anie when you want wnath want me taga dam dam da tam nostrum voluptate obcaecati facere, beatae sit soluta officia?`,
+        img: 2,
+        color: 'white',
+        priority: 2,
+        date: '6/12/2017 12:30:24'
+    },
+    {
+        id: 106,
+        title: 'Search for another job',
+        text: `when you want wnath want me taga dam dam da tam nostrum voluptate obcaecati facere, beatae sit soluta officia?`,
+        img: '',
+        color: 'red',
+        priority: 1,
+        date: '7/10/2016 17:24:48'
+    },
+    {
+        id: 107,
+        title: 'Do Dishes',
         text: `Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur maxime dolores, sunt necessitatibus inventore culpa recusandae fugit provident, alias unde totam molestiae nostrum voluptate obcaecati facere, beatae sit soluta officia?`,
-        img: 'url',
+        img: '',
         color: 'red',
         priority: 3,
         date: '7/12/2015 11:40:24'
     },
-    {
-        id: 102,
-        title: 'Rangler',
-        text: `Lorem, ipsum alias unde totam molestiae nostrum voluptate obcaecati facere, beatae sit soluta officia?`,
-        img: 'url',
-        color: 'blue',
-        priority: 5,
-        date: '4/12/2016 16:24:24'
-    },
-    {
-        id: 103,
-        title: 'Rangler',
-        text: `Lorem, ipsum alias unde totam molestiae anie when you want wnath want me taga dam dam da tam nostrum voluptate obcaecati facere, beatae sit soluta officia?`,
-        img: 'url',
-        color: 'black',
-        priority: 1,
-        date: '7/08/2014 13:24:24'
-    },
+  
 ]
 var _upAndDown = !_upAndDown
 

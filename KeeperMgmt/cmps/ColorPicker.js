@@ -6,11 +6,11 @@ export default {
     template: `
     <section>
         <button @click="toggleBtns" :class="[pickerBtn, pickedColor]"></button>
-
-        <button v-show="btnActive" @click="changeColor('color')" class="color-picker-btn color-picker-white animated bounceInLeft"></button>
+        <button v-show="btnActive" @click="changeColor('white')" class="color-picker-btn color-picker-white animated bounceInLeft"></button>
         <button v-show="btnActive" @click="changeColor('red')" class="color-picker-btn color-picker-red animated bounceInLeft"></button>
         <button v-show="btnActive" @click="changeColor('blue')" class="color-picker-btn color-picker-blue animated bounceInLeft"></button>
         <button v-show="btnActive" @click="changeColor('green')" class="color-picker-btn color-picker-green animated bounceInLeft"></button>
+        <button v-show="btnActive" @click="changeColor('orange')" class="color-picker-btn color-picker-orange animated bounceInLeft"></button>
     </div>
     </section>
     `,
