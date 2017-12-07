@@ -14,7 +14,7 @@ var notes = [
         title: 'Rangler',
         text: `Lorem, ipsum alias unde totam molestiae nostrum voluptate obcaecati facere, beatae sit soluta officia?`,
         img: 'url',
-        color: 'black',
+        color: 'blue',
         priority: 5,
         date: '4/12/2016 16:24:24'
     },
