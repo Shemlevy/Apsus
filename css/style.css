@@ -4,13 +4,14 @@
     outline:0;
 }
 
+
 .md-card {
     width: 320px;
-    margin: 4px;
+    margin: 2px;
     display: inline-block;
     vertical-align: top;
     overflow: hidden;
-    transition: all .5s ease-in-out;
+    transition: all .3s ease-in-out;
     cursor: pointer;
     text-overflow: ellipsis;
 }
@@ -18,11 +19,34 @@
 .md-card:hover {
     transform: scale(1.05);
 }
+.md-card-header:last-child {
+    margin: 0;
+}
 
+.delete-btn {
+    width: 100px;
+    background: rgb(219, 82, 82);
+    color:white;
+    font-weight: 500;
+    border:none;
+    border-radius: 0;
+    box-shadow: 2px 2px 4px rgb(170, 165, 165);
+    font-size: 1em;
+    align-self: center;
+    transition: all .3s ease-in-out;
+    cursor: pointer;
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 65px;    
+}
+.delete-btn:hover {
+    background: rgb(180, 55, 55);
+    transform: scale(1.1)
+}
 
 .note-view{
-    width: 300px;
-    height: 60vh;
+    width: 80vw;
+    height: 90vh;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.459);
     font-family: Roboto,Noto Sans,-apple-system,BlinkMacSystemFont,sans-serif;
     display: flex;
@@ -33,25 +57,29 @@
 
 .note-edit-date{
     align-self: center;
-    opacity: .25;
+    opacity: .10;
     font-size: 14px;    
 }
 
 .note-edit-title{
     font-size: 36px;
-    margin: 15px;
+    margin: 5px;
+    line-height: 1;
 }
 
 .note-edit-text{
     opacity: .54;
+    margin: 10px;
     font-size: 20px;
 }
 
 
 .color-picker-btn{
+    margin: 2px;    
+    margin-top: 40px;
     border-radius: 50%;
-    width: 40px;
-    height: 40px;
+    width: 25px;
+    height: 25px;
     border: none;
     cursor: pointer;
     box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.459);
@@ -78,5 +106,71 @@
 
 .color-picker-green{
     background: rgba(75, 250, 148, 0.801)
+}
+
+.color-picker-orange{
+    background: rgba(250, 157, 18, 0.801)
+}
+
+.priority {
+    z-index: 2;
+    margin: 0 0 0 -23px;
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 1em;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all .5s ease-in-out;
+}
+
+.star-btn:hover {
+    transform: rotate(360deg)
+}
+.star-btn { 
+    z-index: 1;
+    margin:2px;
+    background: none !important;
+    border:none !important;
+    font-size: 2em !important;
+    color: gold; 
+    cursor: pointer !important;
+    transition: all .5s ease-in-out;
+}
+
+
+
+.star:hover {
+    color: rgba(255, 241, 43, 0.644);
+    transform: rotate(360deg)
+}
+.star {
+    margin-left:10px;
+    background: none !important;
+    border:none;
+    font-size: 2em !important;
+    color: gold; 
+    transition: all .2s ease-in-out;
+    cursor: pointer;
+}
+.note-img {
+    width: 90%;
+    align-self: center !important;
+    margin: 5%;
+    text-align: center;
+    border-radius: 10px;
+    
+}
+.input-file{
+    opacity: 0;
+}
+div.note-edit-img-container > i {
+    font-size:1.5em !important;
+    color: rgb(206, 204, 196);
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+}
+div.note-edit-img-container > i:hover {
+    transform: scale(1.3);
 }
 

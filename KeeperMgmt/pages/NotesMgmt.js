@@ -5,7 +5,6 @@ import NoteService from '../services/NoteService.js'
 export default {
     template: `
         <section>
-            <router-link to="/notes" exact>All</router-link>
             <note-preview @viewNote="viewNoteDetails" v-for="note in notes" :note="note"></note-preview>
             <button @click="addNote">+</button>
             <button @click="dateSorted('date')">datesort</button>
