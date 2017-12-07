@@ -1,5 +1,6 @@
 import NoteService from '../services/NoteService.js'
 import NotesMgmt from './NotesMgmt.js'
+import ColorPicker from '../cmps/ColorPicker.js'
 
 export default {
     template: `
@@ -12,15 +13,16 @@ export default {
                     <!-- <img :src="'img/note/' + note.id + '.png'" > -->
                 </div>
                 <section class="tools">
-                    <select>{{note.color}}</select>
+                    <color-picker :value="note.color" @saveColor="changeColor"></color-picker>
                     <select>{{note.priority}}</select>
                 </section>
+                <md-button class="md-raised md-accent" @click="deleteNote(note.id)">Delete</md-button>
             </div>
         </section>
     `,
     data() {
         return {
-            note :  null,    
+            note :  null,
         }
     },
     created() {
@@ -34,6 +36,9 @@ export default {
          }) 
     },
     methods: {
+        changeColor(color){
+            this.note.color = color
+        },
         updateTitle(ev, note) {
             this.note.title = ev.target.innerText
             this.note.newTitle = false;
@@ -58,6 +63,9 @@ export default {
             if (text.newTitle || text.newText) ev.target.innerText = ''
             
         }
-    }
+    },
+    components: {
+        ColorPicker
+    },
 }
 
