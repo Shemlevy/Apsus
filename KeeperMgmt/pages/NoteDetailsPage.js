@@ -31,8 +31,9 @@ export default {
             })
          .catch(err => {
              this.$router.push('/notes')
-         }) 
+         })
     },
+
     methods: {
         updateTitle(ev, note) {
             this.note.title = ev.target.innerText

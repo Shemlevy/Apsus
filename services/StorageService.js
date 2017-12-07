@@ -1,13 +1,19 @@
 
 function store(key, any) {
-    localStorage[key] = JSON.stringify(any);
+    var str = JSON.stringify(any);
+    // console.log('any', str);
+    window.localStorage.setItem(key, str);
 }
+
 
 function load(key) {
-    var str = localStorage[key] || 'null';
-    return JSON.parse(str);
+    var str = window.localStorage.getItem(key) || 'null';
+    if(!str) return null
+    console.log('str', str);
+    var any = JSON.parse(str)
+    console.log('any', any);
+    return any;
 }
-
 
 export default {
     store,

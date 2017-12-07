@@ -1,3 +1,4 @@
+
 var notes = [
     {
         id: 101,
@@ -6,7 +7,7 @@ var notes = [
         img: 'url',
         color: 'red',
         priority: 3,
-        date: '25/10/1989 00:23'
+        date: '7/12/2015 11:40:24'
     },
     {
         id: 102,
@@ -15,7 +16,7 @@ var notes = [
         img: 'url',
         color: 'black',
         priority: 5,
-        date: '15/10/200 15:23'
+        date: '4/12/2016 16:24:24'
     },
     {
         id: 103,
@@ -23,13 +24,15 @@ var notes = [
         text: `Lorem, ipsum alias unde totam molestiae anie when you want wnath want me taga dam dam da tam nostrum voluptate obcaecati facere, beatae sit soluta officia?`,
         img: 'url',
         color: 'black',
-        priority: 5,
-        date: '25/10/2020 13:25'
+        priority: 1,
+        date: '7/08/2014 13:24:24'
     },
 ]
+var _upAndDown = !_upAndDown
+
 
 function emptyNote() {
-    return { id:'', title: 'Title' , text: 'Text', img: '', color: '', priority: '', date: _getDate(), newTitle:true , newText:true }
+    return { id: '', title: 'Title', text: 'Text', img: '', color: '', priority: '', date: _getDate(), newTitle: true, newText: true }
 }
 
 function _getNextId() {
@@ -42,18 +45,20 @@ function _getNextId() {
 }
 
 function _getDate() {
-       var result='';
-       var d = new Date();
-       result += d.getDate()+'/'+(d.getMonth()+1)+'/'+d.getFullYear() + 
-                 ' '+ d.getHours()+':'+d.getMinutes()+':'+
-                 d.getSeconds();
-       return result;
+    var result = '';
+    var d = new Date();
+    result += d.getDate() + '/' + (d.getMonth() + 1) + '/' + d.getFullYear() +
+        ' ' + d.getHours() + ':' + d.getMinutes() + ':' +
+        d.getSeconds();
+    return result;
 }
 
 
 function getNotes() {
     return new Promise((resolve, reject) => {
-        setTimeout(() => { resolve(notes) }, 500)
+        setTimeout(() => {
+            resolve(notes)
+        }, 500)
     });
 }
 
@@ -63,13 +68,12 @@ function saveNote(note) {
         if (note.id) {
             var noteToUpdateIdx = notes.findIndex(currNote => currNote.id === note.id)
             notes.splice(noteToUpdateIdx, 1, note);
-            console.log('note number',note.id,'was save');
+            console.log('note number', note.id, 'was save');
         } else {
             note.id = _getNextId();
             notes.push(note);
             console.log('i create a new one');
         }
-
         resolve(notes)
     });
 }
@@ -89,14 +93,32 @@ function getNoteById(noteId) {
         if (foundNote) resolve(foundNote)
         else reject();
     })
-
-
 }
+
+function sortByDate() {
+    _upAndDown = !_upAndDown
+    notes.sort(function (a, b) {
+        if (_upAndDown) return a.date > b.date;
+        else return b.date > a.date;
+    })
+    return notes
+}
+function sortBypriority() {
+    _upAndDown = !_upAndDown
+    notes.sort(function (a, b) {
+        if (_upAndDown) return a.priority > b.priority;
+        else return b.priority > a.priority;
+    })
+    return notes
+}
+
+
 
 export default {
     getNotes,
     saveNote,
     deleteNote,
     emptyNote,
-    getNoteById
+    getNoteById,
+    sortByDate
 }
