@@ -5,7 +5,7 @@ import NoteService from '../services/NoteService.js'
 export default {
     template: `
         <section>
-            <note-preview @viewNote="viewNoteDetails" v-for="note in notes" :note="note"></note-preview>
+            <note-preview @viewNote="viewNoteDetails" v-for="note in notes" :note="note" :key="note.id"></note-preview>
             <button @click="addNote">+</button>
             <button @click="dateSorted('date')">datesort</button>
             <button @click="prioritySorted('priority')">priority</button>

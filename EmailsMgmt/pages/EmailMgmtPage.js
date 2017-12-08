@@ -11,7 +11,7 @@ export default {
         <div class="md-layout ">
             <div class="md-layout-item md-size-30">
                 <md-list class="md-triple-line" v-if="emails">
-                    <email-preview @viewEmail="viewEmailDetails" v-if="emails" v-for="email in emails" :email="email"></email-preview>
+                    <email-preview @viewEmail="viewEmailDetails" v-if="emails" v-for="email in emails" :email="email" :key="email.id"></email-preview>
                 </md-list>
             </div>
             <div class="md-layout-item md-size-70">

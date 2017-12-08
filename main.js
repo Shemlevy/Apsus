@@ -24,7 +24,7 @@ new Vue({
                                 <div class="md-toolbar-section-end">
                                     <md-button @click="goToPage('/emails')">Mail</md-button>
                                     <md-button @click="goToPage('/notes')">notes</md-button>
-                                    <md-button>Map</md-button>
+                                    <md-button @click="goToPage('/maps')">Map</md-button>
                                 </div>
                             </div>
                         </md-app-toolbar>
