@@ -20,7 +20,6 @@ new Vue({
                                     </md-button>
                                     <span class="md-title">Apsus</span>
                                 </div>
-                        
                                 <div class="md-toolbar-section-end">
                                     <md-button @click="goToPage('/emails')">Mail</md-button>
                                     <md-button @click="goToPage('/notes')">notes</md-button>
@@ -31,15 +30,11 @@ new Vue({
                 
                         <md-app-drawer :md-active.sync="menuVisible">
                             <md-toolbar class="md-transparent" md-elevation="0">Navigation</md-toolbar>
-                    
                             <md-list>
                             </md-list>
-                        </md-app-drawer>
-                
-                        <md-app-content>
-                                <router-view></router-view>
-                        </md-app-content>
+                        </md-app-drawer>    
                     </md-app>
+                    <router-view></router-view>
               </div>
         </section>
     `,

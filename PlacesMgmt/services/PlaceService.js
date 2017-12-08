@@ -35,7 +35,7 @@ function handleLocationError(error) {
     }
 };
 
-//initMap with lat and lng, onload to Saint-Louis-du-Ha! Ha!,
+// initMap with lat and lng, onload to Saint-Louis-du-Ha! Ha!,
 function initMap(lat, lng) {
     if (!lat) lat = 47.667133;
     if (!lng) lng = -68.980006;
@@ -47,8 +47,16 @@ function initMap(lat, lng) {
             zoom: 18
         }
     )
+    var markerIcon = {
+        url: 'http://image.flaticon.com/icons/svg/252/252025.svg',
+        scaledSize: new google.maps.Size(60, 60),
+        origin: new google.maps.Point(0, 0), 
+        anchor: new google.maps.Point(20,40) 
+      };
 
     var marker = new google.maps.Marker({
+        icon: markerIcon,  
+        animation: google.maps.Animation.DROP,        
         position: { lat: lat, lng: lng },
         map: map,
         title: 'Hello World!'
@@ -86,12 +94,12 @@ function getWeather(lat, lng) {
     })
 }
 
-export default {
-    getWeather,
-    getGeoByAddress,
-    showAddress,
-    initMap,
-    handleLocationError,
-    showLocation,
-    getPosition
-}
+// export default {
+//     getWeather,
+//     getGeoByAddress,
+//     showAddress,
+//     initMap,
+//     handleLocationError,
+//     showLocation,
+//     getPosition
+// }
