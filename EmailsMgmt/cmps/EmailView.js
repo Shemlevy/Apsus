@@ -13,13 +13,18 @@ export default {
                 <section class="tools">
 
                 </section>
-                <md-button class="md-raised md-accent" @click="deleteNote(note.id)">Delete</md-button>
+                <md-button class="md-raised md-accent" @click="emitDelete(email.id)">Delete</md-button>
             </div>
         </section>
     `,
     data (){
         return {
             email: null,
+        }
+    },
+    methods:{
+        emitDelete(emailId){
+            this.$emit('deleteEmail', emailId)
         }
     },
     created (){

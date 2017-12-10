@@ -1,23 +1,29 @@
 'use strict'
+import EmailService from '../services/EmailService.js'
 
 export default {
     template:`
     <section class="md-layout-item">
         <md-list-item @click="openEmail">
         <div class="md-list-item-text">
-          <h3 style="font-size: 18px">{{email.title}}</h3>
+            <small v-if="catagory !== 'sent'">from: {{email.from}}</small>
+            <small v-else>sent to: {{email.to}}</small>
+          <h1 class="email-preview-title">{{email.title}}</h1>
           <p>{{shortText}}</p>
-          <span>{{email.date}}</span>
+          <p>recived at: {{email.date}}</p>
         </div>
-
-        <md-button v-if="email.isRead" class="md-icon-button md-list-action">
-          <md-icon class="md-primary">star</md-icon>
-        </md-button>
+          <md-icon v-if="email.isRead" class="md-primary">done</md-icon>
+          <md-icon v-else="email.isRead" class="md-accent">brightness_1</md-icon>
       </md-list-item>
       <md-divider class="md-inset"></md-divider>
     </section>
     `,
-    props: ['email'],
+    props: ['email','catagory'],
+    data(){
+        return{
+            myMail: EmailService.getMyMail()
+        }
+    },
     computed: {
         shortText() {
             let string = this.email.txt

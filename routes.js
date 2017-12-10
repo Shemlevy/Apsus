@@ -3,11 +3,9 @@ import HomePage from './pages/HomePage.js'
 import NotesMgmt from './KeeperMgmt/pages/NotesMgmt.js'
 import NoteDetailsPage from './KeeperMgmt/pages/NoteDetailsPage.js'
 import EmailsMgmt from './EmailsMgmt/pages/EmailMgmtPage.js'
-import Testing from './KeeperMgmt/cmps/ColorPicker.js'
 import PlacesMgmt from './PlacesMgmt/pages/PlacesMgmt.js'
 
 const routes = [
-
     {
         path: '/',
         component: HomePage
@@ -21,21 +19,17 @@ const routes = [
         component: NoteDetailsPage
     },
     {
-        path: '/emails',
+        path: '/emails/:emailCatagory',
         component: EmailsMgmt
     },
     {
-        path: '/emails/:emailId',
+        path: '/emails/:emailCatagory/:emailId',
         component: EmailsMgmt
     },
     {
         path: '/maps',
         component: PlacesMgmt
     },
-    {
-        path: '/testing',
-        component: Testing
-    }
 ];
 
 export default routes;
