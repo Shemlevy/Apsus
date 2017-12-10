@@ -1,3 +1,38 @@
+.pre-app-icon{
+    color: rgb(0, 0, 0) !important;
+}
+
+.pre-app-container{
+    text-align: center;
+}
+body > section > section > div.services-title-container{
+    margin-top: 30px;
+    margin-bottom: 30px;
+
+}
+
+.team-divider-div{
+    height: 10px;
+}
+
+.about-member-name{
+    display: block;
+}
+
+.about-member-details{
+    margin-left: 8px;
+}
+
+.footer-container{
+    margin-left: 45px;
+}
+
+.our-services{
+    font-size: 45px;
+    text-align: center;
+    font-family: 'Pacifico', cursive;
+    text-shadow: 3px 3px 6px rgb(168, 168, 168);
+}
 
 .welcome {
     display: flex;
