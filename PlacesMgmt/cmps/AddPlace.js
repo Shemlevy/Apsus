@@ -4,35 +4,29 @@
 export default {
     template: `
     <section>
-    <div v-if="sideBar"  v-on:blur="sideBar = !sideBar" class="side-bar">
-        <h1>{{searchPosition}}</h1>
-        <p>choose icon to describe the place</p>
-        <div class="icon-places">
-            <label v-for="(item,idx) in 4" :for="idx"> 
-                <input class="label-ico" type="checkBox" @click="pickedPlace" :id="idx">
-                <i :class="icons.img[idx]"  :title="icons.title[idx]" aria-hidden="true"></i>
-            </label>
+        <div v-if="sideBar"  v-on:blur="sideBar = !sideBar" class="side-bar">
+            <h1>{{searchPosition}}</h1>
+            <p>choose icon to describe the place</p>
+            <div class="icon-places">
+                <label v-for="(item,idx) in 4" :for="idx"> 
+                    <input class="label-ico" type="checkBox" @click="pickedPlace" :id="idx">
+                    <i :class="icons.img[idx]"  :title="icons.title[idx]" aria-hidden="true"></i>
+                </label>
+            </div>
+            <input v-model="placeTitle" class="input-place" placeholder="Title For The Place"  type="text">
+            <textarea v-model="placeInfo" class="input-place" placeholder="Describe this place" rows="5"  type="text"></textarea>
+            <div class="picked-info">
+                <i :class="pickedIco"  :title="pickedPlaceInfo" aria-hidden="true"></i>
+                <p>{{pickedPlaceInfo}}</p>
+            </div>
+            <section class="save-btns">
+                <label for="btn-save-input">
+                    <i  class="material-icons add-photo">add_a_photo</i>
+                </label>
+                <input type="file" id="btn-save-input"></input>
+                <button @click="savePlace" class="btn-save">Save Place</button>
+            </section>  
         </div>
-        <input v-model="placeTitle" class="input-place" placeholder="Title For The Place"  type="text">
-        <textarea v-model="placeInfo" class="input-place" placeholder="Describe this place" rows="5"  type="text"></textarea>
-        <div class="picked-info">
-            <i :class="pickedIco"  :title="pickedPlaceInfo" aria-hidden="true"></i>
-            <p>{{pickedPlaceInfo}}</p>
-        </div>
-        <section class="save-btns">
-            <label for="btn-save-input">
-                <i  class="material-icons add-photo">add_a_photo</i>
-            </label>
-            <input type="file" id="btn-save-input"></input>
-            <button @click="savePlace" class="btn-save">Save Place</button>
-        </section>  
-    </div>
-
-    <div>
-
-    </div>
-        <input id="pac-input" @change="getGeoByAddress" class="controls" type="text"  placeholder="Search Box">    
-    <div class="google-map" :id="mapName"></div>
     </section>
     `,
     name: 'google-map',
