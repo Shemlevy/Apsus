@@ -14,7 +14,7 @@ new Vue({
     template: `
         <section class="main-body">
                 <div class="page-container">
-                                <md-tabs class="md-primary" md-alignment="fixed">
+                                <md-tabs class="md-primary main-nav" md-alignment="fixed">
                                     <template slot="md-tab" slot-scope="{ tab }">
                                         {{ tab.label }} <i class="badge" v-if="tab.data.badge">{{ tab.data.badge }}</i>
                                     </template>
@@ -22,11 +22,9 @@ new Vue({
                                     <md-tab :md-template-data="{ badge: newEmails }" @click="goToPage('/emails/inbox')" md-label="Mail"></md-tab>
                                     <md-tab @click="goToPage('/notes')" md-label="notes"></md-tab>
                                     <md-tab @click="goToPage('/maps')" md-label="Map"></md-tab>
-                                </md-tabs>
+                                </md-tabs>                                
                             </div>
-            
-                
-                                <router-view></router-view>
+                 <router-view></router-view>
               </div>
         </section>
     `,

@@ -178,7 +178,54 @@
   }
 }
 
-.gmnoprint {
-  z-index: 1;
+.place-modal {
+  position: absolute;
+  z-index: 6;
+  background-color: rgba(255, 255, 255, 0.856);
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.356);
+  font-size: 1em;
+  font-weight: 500;
+  
+}
+.place-modal h1 {
+  font-size: 2em;
+  margin-bottom:10px;
+}
+
+.info {
+  margin: 30px;
+}
+
+.category {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.place-modal img{
+  width: 100%;
+  max-height: 250px;
+  box-shadow: 1px 1px 2px black;
+}
+
+.btns-crud {
+  display: flex;
+  width: 100%;
+  font-size: 1.5em;
+  align-items: center;
+}
+.btn-crud {
+  cursor: pointer;
+  background-color: rgb(221, 221, 221);
+  font-size: 1em;
+  color:rgb(134, 121, 121);
+  width:100%;
+  border-radius: 0;
+  border: 1px solid rgba(128, 120, 120, 0.623);
+  border-top:0;
+  transition: all .3s ease-in-out;
+}
+.btn-crud:hover {
+  background-color: rgb(165, 162, 162);
+  color:white;
 }
 
