@@ -1,5 +1,5 @@
 'use strict';
-// import PlaceServices from '../services/PlaceService.js'
+import ShowPlace from '../cmps/ShowPlace.js'
 
 export default {
     template: `
@@ -27,16 +27,14 @@ export default {
             <button @click="savePlace" class="btn-save">Save Place</button>
         </section>  
     </div>
-
-    <div>
-
-    </div>
+    <show-place v-if="showPlace" @place="deletePlace" :icons="icons" :currPlace="currPlace" ></show-place>
+   
         <input id="pac-input" @change="getGeoByAddress" class="controls" type="text"  placeholder="Search Box">    
     <div class="google-map" :id="mapName"></div>
     </section>
     `,
     name: 'google-map',
-    props: ['name'],
+    props: ['name',],
     data: function () {
         return {
             icons: {
@@ -52,7 +50,10 @@ export default {
                 catagory: this.pickedPlaceInfo,
                 title: `Zanzibar`,
                 info: `Need to go`,
-                img: this.img,
+                img: 'PlacesMgmt/img/zanzibar.jpg',
+                iconTitle: 'I Wanna FunFunFun',
+                iconClass: 'fa fa-heartbeat ico-places',
+                idx: 0,
             }, {
                 latitude: 21.521757,
                 longitude: -77.781167,
@@ -61,16 +62,22 @@ export default {
                 catagory: this.pickedPlaceInfo,
                 title: `Cuba`,
                 info: 'Look for a job there',
-                img: this.img,
+                img: 'PlacesMgmt/img/cuba.jpg',
+                iconTitle: 'Good Job',
+                iconClass: 'fa fa-briefcase ico-places',
+                idx: 1,
             }, {
                 latitude: 36.1662204,
                 longitude: -95.99042689999999,
                 placeName: this.searchPosition,
                 icoUrl: 'PlacesMgmt/ico/place.png',
                 catagory: this.pickedPlaceInfo,
-                title: 'Philipense',
+                title: 'Philippines',
                 info: 'After Zanzibar',
-                img: this.img,
+                img: 'PlacesMgmt/img/philippines.jpg',
+                iconTitle: 'A Place To Remember',
+                iconClass: 'fa fa-map-marker ico-places',
+                idx: 2,
             }, {
                 latitude: 32.0555229,
                 longitude: 34.76106,
@@ -79,7 +86,10 @@ export default {
                 catagory: this.pickedPlaceInfo,
                 title: 'Tel-Aviv',
                 info: 'Good place to eat',
-                img: this.img,
+                img: 'PlacesMgmt/img/tel-aviv.jpg',
+                iconTitle: 'Great Place To Eat',
+                iconClass: 'fa fa-cutlery ico-places',
+                idx: 3,
             },
             ],
 
@@ -97,7 +107,8 @@ export default {
             pickedIco: null,
             placeTitle: null,
             placeInfo: null,
-
+            showPlace: false,
+            currPlace: null
 
 
 
@@ -132,13 +143,21 @@ export default {
                         draggable: true,
                         map: this.map
                     });
+                    //function for adding place?
                     marker.addListener('click', function (e) {
+                        console.log('eventtooo', e);
                         this.sideBar = !this.sideBar
                     });
 
                 });
 
+
         },
+        deletePlace(idx) {
+            console.log('idx to delete', idx);
+            this.markerCoordinates.splice(idx,1)
+        },
+     
         showAddress(lat, lng) {
             axios.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=AIzaSyBMPwmpKGkNozJfQ2zrVZdvlvJDv7QsZrM`)
                 .then(res => {
@@ -163,13 +182,16 @@ export default {
                 info: this.placeInfo,
                 img: this.img,
                 latitude: this.searchLocation.latitude,
-                longitude: this.searchLocation.longitude
+                longitude: this.searchLocation.longitude,
+                iconTitle: this.pickedPlaceInfo,
+                iconClass: this.pickedIco,
+                idx: this.markerCoordinates.length
 
             }
         }
     },
     computed: {
-
+     
     },
     mounted: function () {
         var self = this
@@ -199,15 +221,18 @@ export default {
 
             });
             marker.addListener('click', function (e) {
-                this.map.panTo(new google.maps.LatLng(coord.latitude,coord.longitude));
+                this.map.panTo(new google.maps.LatLng(coord.latitude, coord.longitude));
                 this.map.setZoom(17)
-                self.sideBar = !self.sideBar
-                console.log(this)
+                self.showPlace = !self.showPlace
+                self.currPlace = coord
             });
 
             this.markers.push(marker)
             this.map.fitBounds(this.bounds.extend(position))
         });
+    },
+    components: {
+        ShowPlace
     }
 }
 
