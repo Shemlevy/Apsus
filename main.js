@@ -14,11 +14,7 @@ new Vue({
     template: `
         <section class="main-body">
                 <div class="page-container">
-<<<<<<< HEAD
                                 <md-tabs md-alignment="fixed">
-=======
-                                <md-tabs class="md-primary main-nav" md-alignment="fixed">
->>>>>>> bea77a54421e7be62e6508dd9c2a5a9360665f7f
                                     <template slot="md-tab" slot-scope="{ tab }">
                                         {{ tab.label }} <i class="badge" v-if="tab.data.badge">{{ tab.data.badge }}</i>
                                     </template>

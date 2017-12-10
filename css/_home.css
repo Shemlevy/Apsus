@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 .pre-app-icon{
     color: rgb(0, 0, 0) !important;
 }
@@ -6,7 +5,34 @@
 .pre-app-container{
     text-align: center;
 }
-=======
+body > section > section > div.services-title-container{
+    margin-top: 30px;
+    margin-bottom: 30px;
+
+}
+
+.team-divider-div{
+    height: 10px;
+}
+
+.about-member-name{
+    display: block;
+}
+
+.about-member-details{
+    margin-left: 8px;
+}
+
+.footer-container{
+    margin-left: 45px;
+}
+
+.our-services{
+    font-size: 45px;
+    text-align: center;
+    font-family: 'Pacifico', cursive;
+    text-shadow: 3px 3px 6px rgb(168, 168, 168);
+}
 
 .welcome {
     display: flex;
@@ -38,4 +64,3 @@
     50% {color:rgba(255, 233, 37, 0.918);}
     100% {color:rgba(255, 255, 255, 0.966);}
   }
->>>>>>> bea77a54421e7be62e6508dd9c2a5a9360665f7f

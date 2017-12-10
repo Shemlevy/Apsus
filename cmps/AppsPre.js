@@ -3,7 +3,7 @@
 export default {
     template: `
     <section>
-        <div class="md-layout md-gutter">
+        <div class="md-layout md-gutter md-alignment-center-center">
             <div class="md-layout-item">
                 <md-card>
                     <md-card-media class="pre-app-container">
