@@ -5,6 +5,7 @@
 @import '../lib/animate.css';
 @import '_notes.css';
 @import '_places.css';
+@import '_home.css'
 
 
 
@@ -76,4 +77,8 @@
 .md-layout-item > .md-list.md-triple-line.md-theme-default{
     overflow-y: scroll;
     max-height: 70vh
+}
+
+.email-delete-button-container{
+    margin-top: 100px;
 }

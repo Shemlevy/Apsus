@@ -34,7 +34,7 @@ export default {
                     </md-list>
                 </div>
             </div>
-            <div class="md-layout-item">
+            <div class="md-layout-item md-size-60">
                 <email-view v-if="searchedEmails.length > 0" @deleteEmail="deleteEmail"></email-view>
             </div>
             <email-write @sendEmail="sendNewEmail"></email-write>

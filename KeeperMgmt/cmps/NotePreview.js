@@ -4,21 +4,20 @@ export default {
 
     <md-card>
         <div :class="colorClass" @click="openNote">
-        <md-card-media-cover md-text-scrim>
-            <md-card-media md-ratio="16:9">
-                <img v-if="note.img" :src="'KeeperMgmt/img/'+note.img+'.jpg'"> 
-                <img v-else :background-color="note.color"/>
-            </md-card-media>
-            <md-card-area>
-                <md-card-header>
-                <span class="md-subhead">{{note.date}}</span>
-                <span class="md-title">{{note.title}}</span>
-                <span class="md-subhead">{{shortText}}</span>
-                </md-card-header>
-            </md-card-area>
-        </md-card-media-cover>
-    </div>
-    
+            <md-card-media-cover md-text-scrim>
+                <md-card-media md-ratio="16:9">
+                    <img v-if="note.img" :src="'KeeperMgmt/img/'+note.img+'.jpg'"> 
+                    <img v-else :background-color="note.color"/>
+                </md-card-media>
+                <md-card-area>
+                    <md-card-header>
+                    <span class="md-subhead">{{note.date}}</span>
+                    <span class="md-title">{{note.title}}</span>
+                    <span class="md-subhead">{{shortText}}</span>
+                    </md-card-header>
+                </md-card-area>
+            </md-card-media-cover>
+        </div>
   </md-card>
 
     `,

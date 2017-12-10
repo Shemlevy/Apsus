@@ -6,7 +6,7 @@ import EventBusService from '../../services/EventBusService.js'
 
 var myEmail = 'ben123tu@gmail.com'
 
-function _getNextId() {
+function getNextId() {
     var maxId = emails.reduce((acc, email) => {
         return (email.id > acc) ? email.id : acc
     }, 0);
@@ -28,7 +28,7 @@ function getMyMail() {
 
 function getEmptyEmail() {
     return {
-        id: _getNextId,
+        id: null,
         title: '',
         txt: '',
         to: '',
@@ -127,7 +127,8 @@ export default {
     getMyMail,
     getNewDate,
     getEmailsByCatagory,
-    getUnreadCount
+    getUnreadCount,
+    getNextId
 }
 
 

@@ -63,6 +63,7 @@ export default {
         this.email = EmailService.getEmptyEmail()
         this.email.date = EmailService.getNewDate()
         this.email.from = EmailService.getMyMail()
+        this.email.id = EmailService.getNextId()
     },
     methods: {
         undoMail(){

@@ -1,14 +1,15 @@
 'use strict'
 import NotePreview from '../cmps/NotePreview.js'
 import NoteService from '../services/NoteService.js'
+import AddNote from '../cmps/AddNote.js'
+import SortBtn from '../cmps/SortBtn.js'
 
 export default {
     template: `
         <section>
+            <sort-btn @dateSorted="dateSorted" @prioritySorted="prioritySorted"></sort-btn>
             <note-preview @viewNote="viewNoteDetails" v-for="note in notes" :note="note" :key="note.id"></note-preview>
-            <button @click="addNote">+</button>
-            <button @click="dateSorted('date')">datesort</button>
-            <button @click="prioritySorted('priority')">priority</button>
+            <add-note @addNote="addNote"></add-note>
         </section>
     `,
     data() {
@@ -62,6 +63,8 @@ export default {
 
     },
     components: {
-        NotePreview
+        NotePreview,
+        AddNote,
+        SortBtn
     }
 }

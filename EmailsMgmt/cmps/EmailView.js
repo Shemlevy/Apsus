@@ -4,17 +4,18 @@ import EmailService from '../services/EmailService.js'
 
 export default {
     template: `
-        <section v-if="email">
-            <div v-if="email">
-                <div>{{email.date}}</div>
-                <div>{{email.from}}</div>
-                <div>{{email.title}}</div>
-                <div>{{email.txt}}</div>
-                <section class="tools">
-
-                </section>
-                <md-button class="md-raised md-accent" @click="emitDelete(email.id)">Delete</md-button>
-            </div>
+        <section v-if="email" style="width: 100%">
+                <div>recived at: {{email.date}}</div>
+                <br>
+                <h3>from: {{email.from}}</h3>
+                <br>
+                <h2>{{email.title}}</h2>
+                <br>
+                <p>{{email.txt}}</p>
+                <div class="email-delete-button-container">
+                    <md-button class="md-raised md-accent" @click="emitDelete(email.id)">Delete</md-button>
+                </div>
+                
         </section>
     `,
     data (){

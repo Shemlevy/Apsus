@@ -93,9 +93,7 @@ function _getDate() {
 
 function getNotes() {
     return new Promise((resolve, reject) => {
-        setTimeout(() => {
             resolve(notes)
-        }, 500)
     });
 }
 

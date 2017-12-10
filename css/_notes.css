@@ -183,3 +183,11 @@ div.note-edit-img-container > i {
 div.note-edit-img-container > i:hover {
     transform: scale(1.3);
 }
+
+.add-note-icon{
+    color: black !important;
+}
+
+.note-sort-dial{
+    top: 60px !important;
+}

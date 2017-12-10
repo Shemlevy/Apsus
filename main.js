@@ -41,7 +41,6 @@ new Vue({
         return {
             menuVisible: false,
             newEmails: null
-            
         }
     },
     methods: {
