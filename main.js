@@ -14,7 +14,7 @@ new Vue({
     template: `
         <section class="main-body">
                 <div class="page-container">
-                                <md-tabs md-alignment="fixed"></md-tabs>
+                                <md-tabs md-alignment="fixed">
                                     <template slot="md-tab" slot-scope="{ tab }">
                                         {{ tab.label }} <i class="badge" v-if="tab.data.badge">{{ tab.data.badge }}</i>
                                     </template>
