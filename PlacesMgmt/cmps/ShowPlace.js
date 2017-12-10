@@ -7,8 +7,8 @@ export default {
         <div class="place-modal">
             <img :src="currPlace.img" :alt="currPlace.title">
             <section class="info">
-                <h1>{{currPlace.title}}</h1>
-                <p>{{currPlace.info}}</p>
+                <h1  :contenteditable="editable" autofocus>{{currPlace.title}}</h1>
+                <p  :contenteditable="editable" >{{currPlace.info}}</p>
                 <div class="picked-info category">
                     <i :class="currPlace.iconClass"  :title="currPlace.iconTitle" aria-hidden="true"></i>
                     <p>{{currPlace.iconTitle}}</p>
@@ -24,17 +24,15 @@ export default {
     props: ['currPlace'],
     data: function () {
         return {
-
+            editable: false,
         }   
     },
     methods: {
         edit(){
-            
+            this.editable = !this.editable
         },
         deletePlace () {
-           console.log('idx',this.currPlace.idx); 
-           this.$emit('place',this.currPlace.idx)
-            
+           this.$emit('place',this.currPlace.idx) 
         }
       
     },

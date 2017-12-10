@@ -29,7 +29,7 @@ export default {
     </div>
     <show-place v-if="showPlace" @place="deletePlace" :icons="icons" :currPlace="currPlace" ></show-place>
    
-        <input id="pac-input" @change="getGeoByAddress" class="controls" type="text"  placeholder="Search Box">    
+        <input @change="getGeoByAddress" class="controls" type="text"  placeholder="Search Box" ref="googleSearch">    
     <div class="google-map" :id="mapName"></div>
     </section>
     `,
@@ -155,9 +155,20 @@ export default {
         },
         deletePlace(idx) {
             console.log('idx to delete', idx);
-            this.markerCoordinates.splice(idx,1)
+            this.markerCoordinates.splice(idx, 1)
+            console.log('markers', this.markerCoordinates);
+            this.showPlace = false;
+            this.renderMap()
+
         },
-     
+        // renderMap() {
+
+        //     var lat = this.markerCoordinates[0].latitude
+        //     var lng = this.markerCoordinates[0].longitude
+        //     this.renderMap()            
+
+        // },
+
         showAddress(lat, lng) {
             axios.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=AIzaSyBMPwmpKGkNozJfQ2zrVZdvlvJDv7QsZrM`)
                 .then(res => {
@@ -188,48 +199,55 @@ export default {
                 idx: this.markerCoordinates.length
 
             }
-        }
+        },
+        renderMap() {
+            var self = this
+            this.bounds = new google.maps.LatLngBounds();
+            const element = document.getElementById(this.mapName)
+            const mapCentre = this.searchLocation
+            const options = {
+                center: new google.maps.LatLng(mapCentre.latitude, mapCentre.longitude)
+            }
+            this.map = new google.maps.Map(element, options);
+
+            var input = this.$refs.googleSearch
+            
+            
+            console.log(input)
+            this.searchBox = new google.maps.places.SearchBox(input);
+            this.map.controls[google.maps.ControlPosition.TOP_RIGHT].push(input);
+
+            this.markerCoordinates.forEach((coord) => {
+                const position = new google.maps.LatLng(coord.latitude, coord.longitude);
+                var markerIcon = {
+
+                    url: coord.icoUrl,
+                    scaledSize: new google.maps.Size(30, 30),
+                };
+                const marker = new google.maps.Marker({
+                    icon: markerIcon,
+                    animation: google.maps.Animation.DROP,
+                    position,
+                    map: this.map
+
+                });
+                marker.addListener('click', function (e) {
+                    this.map.panTo(new google.maps.LatLng(coord.latitude, coord.longitude));
+                    this.map.setZoom(17)
+                    self.showPlace = !self.showPlace
+                    self.currPlace = coord
+                });
+
+                this.markers.push(marker)
+                this.map.fitBounds(this.bounds.extend(position))
+            });
+        },
     },
     computed: {
-     
+
     },
-    mounted: function () {
-        var self = this
-        this.bounds = new google.maps.LatLngBounds();
-        const element = document.getElementById(this.mapName)
-        const mapCentre = this.searchLocation
-        const options = {
-            center: new google.maps.LatLng(mapCentre.latitude, mapCentre.longitude)
-        }
-        this.map = new google.maps.Map(element, options);
-        var input = document.getElementById('pac-input');
-        this.searchBox = new google.maps.places.SearchBox(input);
-        this.map.controls[google.maps.ControlPosition.TOP_RIGHT].push(input);
-
-        this.markerCoordinates.forEach((coord) => {
-            const position = new google.maps.LatLng(coord.latitude, coord.longitude);
-            var markerIcon = {
-
-                url: coord.icoUrl,
-                scaledSize: new google.maps.Size(30, 30),
-            };
-            const marker = new google.maps.Marker({
-                icon: markerIcon,
-                animation: google.maps.Animation.DROP,
-                position,
-                map: this.map
-
-            });
-            marker.addListener('click', function (e) {
-                this.map.panTo(new google.maps.LatLng(coord.latitude, coord.longitude));
-                this.map.setZoom(17)
-                self.showPlace = !self.showPlace
-                self.currPlace = coord
-            });
-
-            this.markers.push(marker)
-            this.map.fitBounds(this.bounds.extend(position))
-        });
+    mounted() {
+        this.renderMap()
     },
     components: {
         ShowPlace

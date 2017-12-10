@@ -20,12 +20,12 @@
 }
 
 .main-nav {
-    background-color: deeppink !important;
+    background-color: rgb(224, 163, 112) !important;
 }
 
 
 @-webkit-keyframes headColor {
     0% {color:rgb(255, 255, 255);}
-    50% {color:rgba(255, 233, 37, 0.918);}
+    50% {color: #ff5252;}
     100% {color:rgba(255, 255, 255, 0.966);}
   }
