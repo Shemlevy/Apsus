@@ -191,3 +191,24 @@ div.note-edit-img-container > i:hover {
 .note-sort-dial{
     top: 60px !important;
 }
+
+
+
+@media only screen and (max-width: 768px) {
+    .md-card {
+        width:100vw;
+        /* display: none; */
+    }
+    .md-speed-dial{
+        z-index: 2;
+        
+    }
+    .md-speed-dial.md-top-left, .md-speed-dial.md-top-right{
+        position: fixed;
+    }
+    .body > section > div > div > div.md-tabs-navigation.md-elevation-0{
+        position: fixed;
+        z-index: 3;
+        width: 100vw;
+    }
+}

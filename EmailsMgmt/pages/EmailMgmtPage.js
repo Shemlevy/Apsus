@@ -11,30 +11,29 @@ import EmailWrite from '../cmps/EmailWrite.js';
 export default {
     template: `
     <section>
-        <div class="md-layout">
-            <div class="md-layout-item  nav-search-list">
-                <div class="md-layout md-layout-item">
-                    <div class="md-layou-item">
+        <div class="email-display-container">
+            <div class="email-sort-list-container">
+                <div class="email-sort-container">
+                    <div class="email-side-nav">
                         <side-nav @changeNav="changeCatagory" v-if="navs" :navs="navs"></side-nav>
                     </div>
-                    
-                    <div class="md-layout-item md-size-75">
+                    <div class="email-sort-input-container">
                         <md-field>
                             <md-input @keyup="searchEmails" placeholder="search"></md-input>
                         </md-field>
                         <div>
-                                <md-switch class="md-layout-item" v-if="catagory !== 'sent'" v-model="hideRead">Hide read emails</md-switch>
+                                <md-switch v-model="hideRead">Hide read emails</md-switch>
                                 <sort-nav @reverse="reverseSort" @renderSort="renderSort" v-if="sorts" :sorts="sorts" :sortBy="sortBy"></sort-nav>
                         </div>
                     </div>
                 </div>
-                <div class="md-layout-item">
+                <div>
                     <md-list class="md-triple-line md-scrollbar" v-if="emails">
                         <email-preview @viewEmail="viewEmailDetails" v-if="emails" :catagory="catagory" v-for="email in searchedEmails" :email="email" :key="email.id"></email-preview>
                     </md-list>
                 </div>
             </div>
-            <div class="md-layout-item md-size-60">
+            <div class="email-view-continer">
                 <email-view v-if="searchedEmails.length > 0" @deleteEmail="deleteEmail"></email-view>
             </div>
             <email-write @sendEmail="sendNewEmail"></email-write>

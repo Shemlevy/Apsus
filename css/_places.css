@@ -13,6 +13,14 @@
   top: 0;
 }
 
+#pac-input{
+  padding:10px;
+  border-radius: 8px;
+  border:none;
+  margin:5px;
+  font-weight: 500;
+}
+
 .side-bar {
   position: absolute;
   bottom: 0;
@@ -185,8 +193,12 @@
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.356);
   font-size: 1em;
   font-weight: 500;
-  
+  max-width: 400px;
 }
+
+
+
+
 .place-modal h1 {
   font-size: 2em;
   margin-bottom:10px;

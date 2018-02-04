@@ -3,6 +3,7 @@
 @import url("https://unpkg.com/vue-material@beta/dist/vue-material.min.css");
 @import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic|Material+Icons");
 @import '../lib/animate.css';
+@import '_email.css';
 @import '_notes.css';
 @import '_places.css';
 @import '_home.css';
@@ -81,4 +82,8 @@
 
 .email-delete-button-container{
     margin-top: 100px;
+}
+
+.nav-search-list{
+    min-width: 100%;
 }
